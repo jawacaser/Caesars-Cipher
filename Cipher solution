@@ -1,0 +1,45 @@
+//fCC JavaScript Solutions
+//Owner
+//jawacaser
+//Modified
+//Mar 14, 2022 by me
+//Opened
+//8:49 PM by me
+//Created
+//Mar 17, 2022 with Google Drive Web
+//Add a description
+//Viewers can download
+
+function rot13(str) {
+  let alpha = ['A','B','C','D','E','F','G','H','I','J','K','L',
+    'M','N','O','P','Q','R','S','T','U', 'V','W','X','Y','Z'];
+  //console.log(alpha[(11+13)]) // L --> Z
+
+
+  let decode = []; //the order of the 'new' alphabet
+  for (let i = 0; i < alpha.length; i++) {
+    if (i < 13) {
+      decode.push(alpha[(i+13)])
+    } else if (i >= 13) {
+      decode.push(alpha[(i-13)])
+    }
+  }
+  //console.log(decode)
+
+  let arr = []; // stores the converted letters and other characters
+
+  let strArr = [...str]; // spread the string to apply the conversion
+  //console.log(strArr)
+
+  for (let s = 0; s < str.length; s++) { //iterate through string array
+    if (alpha.includes(strArr[s])) { //if there is a letter...
+      arr.push(decode[(alpha.indexOf(strArr[s]))]) //push the decoded letter
+    } else {
+      arr.push(strArr[s]) //otherwise push the non-letter character
+    }
+  }
+  console.log(arr.join("")) //put it back together
+  return arr.join("");
+}
+
+rot13("SERR CVMMN!");
